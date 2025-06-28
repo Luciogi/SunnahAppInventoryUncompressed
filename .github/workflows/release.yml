@@ -1,5 +1,7 @@
 name: Release Collection
 on: push
+permissions:
+  contents: write
 env:
   GITHUB_TOKEN: ${{ github.token }}
 
