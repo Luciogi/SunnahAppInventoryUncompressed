@@ -1,0 +1,2 @@
+- [ ] grep -P  ' ([0-9]+:[0-9]+)' -R . inventory/collections/1
+- [ ] grep -P  ' ([0-9]+:[0-9]+)' -R . inventory/collections/{2..6}
