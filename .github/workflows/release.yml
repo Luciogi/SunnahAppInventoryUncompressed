@@ -1,0 +1,31 @@
+name: Release Collection
+on: push
+env:
+  GITHUB_TOKEN: ${{ github.token }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install dependencies
+        run: |
+          apt-get update
+          apt-get install -y bzip2
+      - name: Compress
+        run: |
+          collection_path="inventory/collections"
+          # mkdir -pv build/${collection_path}/{1..6}
+          mkdir -pv build
+          for i in {1..6}; do
+            # out_path="build/${collection_path}/${i}"
+            out_path="build"
+            input_path="${collection_path}/${i}"
+            tar -cvf ${out_path}/${i}_collection_base.tar.bz2 ${input_path}/base/*
+            tar -cvf ${out_path}/${i}_collection_en.tar.bz2 ${input_path}/en/*
+          done
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: build/*.tar.bz2
