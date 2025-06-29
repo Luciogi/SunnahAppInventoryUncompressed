@@ -8,4 +8,5 @@ def createChapter(str):
 
 
 - [ ] grep -P  ' ([0-9]+:[0-9]+)' -R . inventory/collections/1
-- [ ] grep -P  ' ([0-9]+:[0-9]+)' -R . inventory/collections/{2..6}
+    - `inventory/collections/1/en/4_hadiths.jsontxt:[2670,` is left intentional idk what todo
+- [x] grep -P  ' ([0-9]+:[0-9]+)' -R . inventory/collections/{2..6}
